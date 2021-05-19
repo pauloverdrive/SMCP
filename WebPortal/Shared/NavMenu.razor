@@ -1,0 +1,72 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">Repair Information</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="PendingApprovals">
+                <span class="oi oi-check" aria-hidden="true"></span> Pending Approvals
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="OpenRepairs">
+                <span class="oi oi-wrench" aria-hidden="true"></span> Open Repairs
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="CompletedRepairs">
+                <span class="oi oi-calendar" aria-hidden="true"></span> Completed Repairs
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="EquipmentHistory">
+                <span class="oi oi-list" aria-hidden="true"></span> Equipment List
+            </NavLink>
+        </li>
+        <AuthorizeView Roles="AllAccountAdministrator">
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="CPCustomerGroupMaintenance">
+                    <span class="oi oi-folder" aria-hidden="true"></span> Group Names
+                    <span class="iconify" data-icon="bi:box-arrow-in-right" data-inline="false"></span>
+                </NavLink>
+            </li>
+        </AuthorizeView>
+        <AuthorizeView Roles="AllAccountAdministrator">
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="CPCustomerGroupShowList">
+                    <span class="oi oi-folder" aria-hidden="true"></span> Display Group Names
+                    <span class="iconify" data-icon="bi:box-arrow-in-right" data-inline="false"></span>
+                </NavLink>
+            </li>
+        </AuthorizeView>
+        <AuthorizeView Roles="AllAccountAdministrator">
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="GroupAssignmentAdmin">
+                    <span class="oi oi-layers" aria-hidden="true"></span> Assign Customers
+                </NavLink>
+            </li>
+        </AuthorizeView>
+        <AuthorizeView Roles="AccountAdministrator">
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="GroupAssignmentAdmin">
+                    <span class="oi oi-people" aria-hidden="true"></span> Assign Users
+                </NavLink>
+            </li>
+        </AuthorizeView>
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

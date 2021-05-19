@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[CPGroupId]
+(
+	[Id] INT NOT NULL PRIMARY KEY
+)

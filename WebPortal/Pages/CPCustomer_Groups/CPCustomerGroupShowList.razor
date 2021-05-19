@@ -1,0 +1,49 @@
+﻿@page "/CPCustomerGroupShowList"
+@using WebPortal.Pages.CPCustomer_Groups
+@inject ICPCustomerGroupDataService cpCustomerGroupData
+    <AuthorizeView Context="authContext" Roles="AllAccountAdministrator">
+        <Authorized>
+
+            @if (cpCustomerGroups == null)
+
+            {
+                <h4>Loading...</h4>
+            }
+            else
+            {
+                <CPCustomerGroupSearchCriteria OnSearchSubmitted="HandleValidSubmit"></CPCustomerGroupSearchCriteria>
+                <div class="row">
+                    <div class="col-md-8">
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Group Id</th>
+                                    <th>Group Name</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var g in cpCustomerGroups)
+                                {
+                                    <tr>
+                                        <td>@g.GroupId</td>
+                                        <td>@g.Name</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+        </Authorized>
+        <NotAuthorized>
+            <h1>Sorry, you do not have authority to access to this page.</h1>
+            <p>
+                The page you are trying to get to requires that you have more permissions than you crrently do. You may need to request additional permissions from your administrator.
+            </p>
+        </NotAuthorized>
+    </AuthorizeView>
+
+    @code {
+
+    }
