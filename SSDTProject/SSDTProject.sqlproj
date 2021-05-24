@@ -62,8 +62,9 @@
     <Build Include="dbo\Tables\CPUserCustomerGroupDetail.sql" />
     <Build Include="dbo\Tables\CPCustomerGroup.sql" />
     <Build Include="dbo\Tables\CPUserCustomerGroupHeader.sql" />
-    <Build Include="dbo\StoredProcedures\spCPCustomerGroup_Insert.sql" />
     <Build Include="dbo\StoredProcedures\spCPCustomerGroup_NameSearch.sql" />
+    <Build Include="dbo\StoredProcedures\spCPCustomerGroup_Upsert.sql" />
+    <Build Include="dbo\StoredProcedures\spCPCustomerGroup_SelectByGroupId.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSDTProject.publish.xml" />

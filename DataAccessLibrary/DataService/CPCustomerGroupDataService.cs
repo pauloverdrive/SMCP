@@ -18,7 +18,7 @@ namespace DataAccessLibrary.DataService
         {
             _dataAccess = dataAccess;
         }
-        public async Task InsertCPCustomerGroup(ICPCustomerGroupModel cpCustomerGroup)
+        public async Task UpsertCPCustomerGroup(ICPCustomerGroupModel cpCustomerGroup)
         {
             // p is parameters for the stored procedure
             var p = new
@@ -26,9 +26,19 @@ namespace DataAccessLibrary.DataService
                 cpCustomerGroup.GroupId,
                 cpCustomerGroup.Name
             };
-            await _dataAccess.SaveData("dbo.spCPCustomerGroup_Insert", p, "SMCPSqlDBConnection");
+            await _dataAccess.SaveData("dbo.spCPCustomerGroup_Upsert", p, "SMCPSqlDBConnection");
 
         }
+        public async Task<ICPCustomerGroupModel> SelectCPCustomerGroup(string groupId)
+        {
+            // p is parameters for the stored procedure
+            var p = new
+            {
+                groupId
+            };
+            var cpCustomerGroups = await _dataAccess.LoadData<CPCustomerGroupModel, dynamic>("dbo.spCPCustomerGroup_SelectByGroupId", p, "SMCPSqlDBConnection");
+            return cpCustomerGroups.FirstOrDefault();         }
+
         public async Task<List<ICPCustomerGroupModel>> GetCPCustomerGroups(ICPCustomerGroupSearchModel cpCustomerGroupSearchWords)
         {
 

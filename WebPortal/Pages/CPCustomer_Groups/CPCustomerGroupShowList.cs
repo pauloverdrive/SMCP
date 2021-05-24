@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebPortal.Models;
 
+
 namespace WebPortal.Pages.CPCustomer_Groups
 {
     public partial class CPCustomerGroupShowList
@@ -23,6 +24,11 @@ namespace WebPortal.Pages.CPCustomer_Groups
             cpCustomerGroups = await cpCustomerGroupData.GetCPCustomerGroups(cpCustomerGroupSearchCriteria);
             this.StateHasChanged();
         }
+        private void UpdateGroup(string groupId)
+        {
+            NavManager.NavigateTo("CPCustomerGroupMaintenance/"+groupId);
+        }
+
     }
 
 

@@ -1,24 +1,29 @@
 ﻿<div class="row">
     <div class="col-md-auto">
         <EditForm Model="@cpCustomerGroupSearchCriteria" OnSubmit="HandleValidSubmit">
-            <CustomValidation @ref="customValidation"/>
+            <CustomValidation @ref="customValidation" />
             <DataAnnotationsValidator />
             <ValidationSummary />
             <div class="row">
                 <div class="input-group ">
                     <div class="form-floating">
-                        <div class=" ml-2 mr-4 mb-2">
-                            <InputText id="idSearch" placeholder="Search For Group Id" @bind-Value="cpCustomerGroupSearchCriteria.GroupIdFilter" class="form-control" mx-12 />
+                        <div class="sm-1">
+                            <InputText maxlength="15" id="idSearch" placeholder="Search for Group Id"   @bind-Value="cpCustomerGroupSearchCriteria.GroupIdFilter" class="form-control" mx-5 />
                         </div>
                     </div>
                     <div class="form-floating">
                         <div class=" ml-2 mr-4 mb-2">
-                            <InputText id="nameSearch" placeholder="Search For Group Name" @bind-Value="cpCustomerGroupSearchCriteria.NameFilter" class="form-control" mx-12 />
+                            <InputText maxlength="50" id="nameSearch" placeholder="Search for Group Name" @bind-Value="cpCustomerGroupSearchCriteria.NameFilter" class="form-control" mx-12 />
                         </div>
                     </div>
                     <div class="form-floating">
                         <div class=" ml-2 mr-4 mb-2">
                             <button id="searchButton" class="btn btn-primary" type="submit">Search</button>
+                        </div>
+                    </div>
+                    <div class="form-floating">
+                        <div class=" ml-2 mr-4 mb-2">
+                            <button id="AddButton" class="btn btn-primary" type="submit">Add New</button>
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ namespace DataAccessLibrary.DataService
     public interface ICPCustomerGroupDataService
     {
        public Task<List<ICPCustomerGroupModel>> GetCPCustomerGroups(ICPCustomerGroupSearchModel cpCustomerGroupSearchWords);
-       public Task InsertCPCustomerGroup(ICPCustomerGroupModel cpCustomerGroup);
+        Task<ICPCustomerGroupModel> SelectCPCustomerGroup(string groupId);
+        Task UpsertCPCustomerGroup(ICPCustomerGroupModel cpCustomerGroup);
     }
 }
